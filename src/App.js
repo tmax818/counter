@@ -1,26 +1,49 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import Counter from './Counter'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+
+class Main extends React.Component {
+state = {count: 0}
+
+
+handleInc = () => {
+  this.setState({count: this.state.count + 1})
+}
+
+handleDec = () => {
+  this.setState({count: this.state.count - 1})
+}
+
+handleReset = () => {
+  this.setState({count: 0})
+}
+
+
+  render(){
+    console.log(this.props)
+    return (
+      <div className="App">
+        <Counter count={this.state.count} handleDec={this.handleDec} handleInc={this.handleInc} reset={this.handleReset} name="Tyler" />
+
+     
+
     </div>
-  );
+  )
+}
+
+}
+
+class App extends React.Component {
+  render() {
+    return (
+
+      <Main name="Jose" />
+
+    )
+  }
+
 }
 
 export default App;
